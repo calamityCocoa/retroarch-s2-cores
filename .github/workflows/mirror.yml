@@ -1,0 +1,63 @@
+name: Mirror Switch 2 cores
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild even if already mirrored
+        type: boolean
+        default: false
+      tag:
+        description: Upstream tag (blank for latest)
+        type: string
+        default: ''
+      include_tiers:
+        description: Comma-separated tiers
+        type: string
+        default: working,boots
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: mirror-gh-pages
+  cancel-in-progress: false
+jobs:
+  mirror:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install test dependency
+        run: python3 -m pip install pytest==8.3.5
+      - name: Test
+        run: python3 -m pytest -q
+      - name: Build and replace gh-pages branch
+        id: mirror
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INPUT_FORCE: ${{ inputs.force || 'false' }}
+          INPUT_TAG: ${{ inputs.tag || '' }}
+          INPUT_TIERS: ${{ inputs.include_tiers || 'working,boots' }}
+        run: python3 mirror.py --defer-live-check
+      - name: Upload Pages site (includes dotfiles in tar)
+        if: steps.mirror.outputs.built == 'true'
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: site
+          retention-days: 1
+      - name: Deploy Pages
+        if: steps.mirror.outputs.built == 'true'
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - name: Verify live index and core archive
+        if: steps.mirror.outputs.built == 'true'
+        env:
+          MIRROR_SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: python3 mirror.py --verify-live
