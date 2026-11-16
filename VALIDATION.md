@@ -9,4 +9,6 @@ Validated on 2026-11-16 using Python 3.14.10 and pytest 8.3.5.
 - Independently opened all 13 resulting core zips and checked each has exactly one root-level NRO and that its uncompressed CRC matches the index.
 - The download/build output is not bundled with this source repository.
 
-No remote repository was created or pushed, and no public site deployment was performed. Live-verification behavior was tested with mocked downloads. The workflow uses official Pages artifact deployment to avoid GitHub's token-triggered branch-build restriction. Actual GitHub deployment remains untested until the repository is uploaded and Pages is enabled.
+Published successfully to https://calamitycocoa.github.io/retroarch-s2-cores/ on 2026-11-16.
+
+GitHub Actions run https://github.com/calamityCocoa/retroarch-s2-cores/actions/runs/43915897306 passed tests, build, branch push, Pages artifact deployment, and live verification. Independently downloaded all 13 public core archives, checked their single root-level NRO entries, and verified every uncompressed CRC against the public index. Public metadata reports switch2-v0.3.0 with no warnings.
