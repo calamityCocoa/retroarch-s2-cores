@@ -1,0 +1,87 @@
+{
+  "upstream_tag": "switch2-v0.5.0",
+  "upstream_release_url": "https://github.com/NerdsMcGee/retroarch-s2/releases/tag/switch2-v0.5.0",
+  "source_url": "https://github.com/NerdsMcGee/retroarch-s2/tree/switch2-v0.5.0",
+  "zip_sha256": "5a9b6720b44d8b39720d920a8f6c2ba5d5e81aa1e511d46fcb86830dd9847290",
+  "build_time": "2026-11-19T15:46:38.664894+00:00",
+  "include_tiers": [
+    "boots",
+    "working"
+  ],
+  "notice": "Redistributes unmodified binaries under their original GPL or other open-source licences. MIT covers mirror scripts only.",
+  "warnings": [],
+  "unmatched_names": [],
+  "unclassified_cores": [],
+  "cores": [
+    {
+      "filename": "bsnes_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "9fda1d2a"
+    },
+    {
+      "filename": "fbneo_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "89586e0b"
+    },
+    {
+      "filename": "fceumm_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "2169a9fb"
+    },
+    {
+      "filename": "flycast_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "4d2f84a4"
+    },
+    {
+      "filename": "genesis_plus_gx_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "ccfeba9f"
+    },
+    {
+      "filename": "mednafen_pce_fast_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "70a8db32"
+    },
+    {
+      "filename": "mednafen_supergrafx_libretro_libnx.nro.zip",
+      "tier": "boots",
+      "crc32": "99cf06c0"
+    },
+    {
+      "filename": "mesen_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "c4d4ca13"
+    },
+    {
+      "filename": "mgba_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "4d63456e"
+    },
+    {
+      "filename": "mupen64plus_next_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "f56c0372"
+    },
+    {
+      "filename": "pcsx_rearmed_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "a53d3996"
+    },
+    {
+      "filename": "picodrive_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "3f3fa05c"
+    },
+    {
+      "filename": "snes9x2010_libretro_libnx.nro.zip",
+      "tier": "working",
+      "crc32": "67e02183"
+    },
+    {
+      "filename": "vba_next_libretro_libnx.nro.zip",
+      "tier": "boots",
+      "crc32": "21b2406e"
+    }
+  ]
+}
